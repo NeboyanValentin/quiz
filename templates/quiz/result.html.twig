@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quiz!{% endblock %}
+{% block body %}
+    <main>
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-md-12 mx-auto">
+                    <h1 class="fw-light mb-5">Here is your result!</h1>
+                    <div class="col-md-12 d-flex mb-5 justify-content-center">
+                        <div class="col-md-5 px-2">
+                            <h4 class="fw-light">Correctly answered</h4>
+                            {% include 'quiz/parts/list.html.twig' with {questions: correctAnsweredQuestions} %}
+                        </div>
+                        <div class="col-md-5 px-2">
+                            <h4 class="fw-light">Incorrectly answered</h4>
+                            {% include 'quiz/parts/list.html.twig' with {questions: inCorrectAnsweredQuestions} %}
+                        </div>
+                    </div>
+                </div>
+
+                <p>
+                    <a href="{{ path('app_quiz_start') }}" class="btn btn-primary my-2">Try again</a>
+                </p>
+            </div>
+        </section>
+    </main>
+{% endblock %}

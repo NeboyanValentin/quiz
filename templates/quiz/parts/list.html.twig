@@ -1,0 +1,25 @@
+{% if questions is not empty %}
+    {% for questionData in questions %}
+        <ul class="list-group mb-3">
+            <li class="list-group-item disabled bg-secondary text-light fw-bold" aria-disabled="true">
+                {{ questionData.question_text }}
+            </li>
+            {% if questionData.user_answers is not empty %}
+                {% for key, answerData in questionData.user_answers %}
+                    <li class="list-group-item">
+                        <span class="fw-bold {{ answerData.is_selected and answerData.is_correct ? 'badge bg-success' : '' }}
+                        {{ answerData.is_selected and answerData.is_correct is same as(false) ? 'badge bg-danger' }} ">
+                            {{ answerData.answer_text }}
+                        </span>
+                    </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+    {% endfor %}
+{% else %}
+    <ul class="list-group mb-3">
+        <li class="list-group-item disabled bg-danger text-light fw-bold" aria-disabled="true">
+            No questions
+        </li>
+    </ul>
+{% endif %}

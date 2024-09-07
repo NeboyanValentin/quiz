@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quiz!{% endblock %}
+{% block body %}
+    <main>
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light"> How about a quiz?</h1>
+                    <p>
+                        <a href="{{ path('app_quiz_start') }}" class="btn btn-primary my-2">Start Quiz</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

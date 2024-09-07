@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Question{% endblock %}
+{% block body %}
+    <div class="container">
+        <form action="{{ path('app_quiz_answer') }}"
+              class="m-auto col-md-6 d-flex flex-column justify-content-center align-items-center" method="POST">
+            <div class="m-5 col-md-12 d-flex flex-column justify-content-center align-items-center">
+                <span>Question</span>
+                <h3 class="mb-3 mt-1">{{ question.text }}</h3>
+                <input type="hidden" name="question" value="{{ question.id }}">
+                <!-- list group -->
+                <div class="list-group col-md-12">
+                    <div class="list-group-item list-group-item-action " aria-current="true">
+                        {% for key, answer in question.answers | shuffle %}
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="user_answers[]"
+                                       id="userAnswer_{{ key }}" value="{{ answer.id }}">
+                                <label class="form-check-label" for="userAnswer_{{ key }}">
+                                    {{ answer.text }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit">Next</button>
+        </form>
+    </div>
+{% endblock %}
